@@ -2,9 +2,9 @@ class IceCream::CLI
 
     def call
         self.welcome
-        main_menu
+        # Scraper.scrape_shops
         loop do
-            user_input = main_menu
+            user_input = list_shops
             if user_input == 'exit' || user_input.include?('n')
               return
             else
@@ -28,8 +28,8 @@ class IceCream::CLI
     def choose_shop
         puts "Choose an ice cream shop to read more about it."
           index = gets.strip.to_i - 1
-          movie = Movie.all[index]
-          Scraper.scrape_info(movie)
-          self.display_movie_info(movie)
+          shop = Shop.all[index]
+          Scraper.scrape_info(shop)
+          self.display_shop_info(shop)
       end
     end
