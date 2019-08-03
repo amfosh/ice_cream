@@ -1,10 +1,10 @@
 class CLI
 
-    def call
+    def run
         self.welcome
-        # Scraper.scrape_shops
+        Scraper.scrape_shops
         loop do
-            user_input = list_shops
+            user_input = main_menu
             if user_input == 'exit' || user_input.include?('n')
               return
             else
@@ -16,20 +16,30 @@ class CLI
     end
 
     def welcome
-        puts "Welcome! Are you in the mood for ice cream?"
-        input = gets.strip.downcase
-        return input
+        puts "Welcome ice cream lover!"
     end
-        
+
+    def main_menu
+      puts "Are you in the mood for ice cream?"
+      input = gets.strip.downcase
+      return input
+    end
+
     def list_shops 
-        puts "shops 1-10"
+        Shop.all.take(10).each_with_index {|s, i| puts "{i + 1}. #{s.name}"}
     end
 
     def choose_shop
-        puts "Choose an ice cream shop to read more about it."
-          index = gets.strip.to_i - 1
-          shop = Shop.all[index]
-          Scraper.scrape_info(shop)
-          self.display_shop_info(shop)
+      puts "Choose an ice cream shop to read more about it."
+        index = gets.strip.to_i - 1
+        shop = Shop.all[index]
+        Scraper.scrape_info(shop)
+        self.display_shop_info(shop)
       end
+
+    def display_shop_indo(shop)
+      puts shop.name
+      puts shop.neighborhood
+      puts shop.review
     end
+  end

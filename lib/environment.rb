@@ -1,6 +1,6 @@
-require_relative "./ice_cream/version"
-require_relative "./ice_cream/cli"
-require_relative "./ice_cream/shop"
+require_relative "./version"
+require_relative "./cli"
+require_relative "./shop"
 
 # module IceCream
 #   class Error < StandardError; end
