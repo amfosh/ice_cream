@@ -1,7 +1,7 @@
-class IceCream::Shop
+class Shop
     @@all = []
 
-    attr_accessor :name, :url, :price, :review
+    attr_accessor :name, :url, :neighborhood, :review
 
     def self.all
         @@all
@@ -10,7 +10,7 @@ class IceCream::Shop
     def initialize(name:,  url:)
         @name = name
         @url = url
-        @price, @review = nil, nil
+        @neighborhoot, @review = nil, nil
         self.class.all << self
     end
 end
