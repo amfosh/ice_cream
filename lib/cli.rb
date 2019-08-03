@@ -1,4 +1,4 @@
-class IceCream::CLI
+class CLI
 
     def call
         self.welcome
