@@ -2,10 +2,31 @@ require "pry"
 
 class Scraper
 
+    # def self.scrape
+    #   shops = []
+    #   shops << self.scrape_shops
+    # end
+
+    # BASE_URL = "https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"
+
     def self.scrape_shops
       doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
-      shop_list = doc.search(".spot-block__title-copy h3").text
+      shop_list = doc.search("div.spot-block__title-copy h3").map{ |h3| 
+      h3.search('p').map { |p| p.text }
+    }
       shop_list
       binding.pry
     end
+
+    def self.scrape_review(shop)
+      # doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
+      url = shop.url
+      html = Nokogiri.HTML(open(url))
+      details =
+      html.css("a.review")[2].text.split(',').map(&:strip)
+      shop.review = ("p")
+    end
+
+    # def self.scrape_review
+    # end
 end

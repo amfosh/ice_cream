@@ -33,11 +33,11 @@ class CLI
       puts "Choose an ice cream shop to read more about it."
         index = gets.strip.to_i - 1
         shop = Shop.all[index]
-        Scraper.scrape_info(shop)
-        self.display_shop_info(shop)
+        Scraper.scrape_shops[index]
+        self.scrape_shops
       end
 
-    def display_shop_indo(shop)
+    def display_shop_info(shop)
       puts shop.name
       puts shop.neighborhood
       puts shop.review
