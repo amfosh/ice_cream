@@ -2,6 +2,7 @@ class CLI
 
     def run
         self.welcome
+        html = open ("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings")
         Scraper.scrape_shops
         loop do
             user_input = main_menu
@@ -12,8 +13,8 @@ class CLI
               self.choose_shop
             end
           end
-  
-    end
+        end 
+
 
     def welcome
         puts "Welcome ice cream lover!"
@@ -34,7 +35,7 @@ class CLI
         index = gets.strip.to_i - 1
         shop = Shop.all[index]
         Scraper.scrape_shops[index]
-        self.scrape_shops
+        # self.scrape_shops
       end
 
     def display_shop_info(shop)
