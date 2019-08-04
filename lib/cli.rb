@@ -2,14 +2,13 @@ class CLI
 
     def run
         self.welcome
-        Scraper.scrape_shops
         loop do
             user_input = main_menu
             if user_input == 'exit' || user_input.include?('n')
               return
             else
-              self.list_shops
               self.choose_shop
+              self.list_shops
             end
           end
         end 
@@ -26,11 +25,12 @@ class CLI
     end
 
     def list_shops 
-        Shop.all.take(10).each_with_index {|s, i| puts "{i + 1}. #{s.name}"}
+      Scraper.scrape_shops
     end
 
     def choose_shop
       puts "Choose an ice cream shop to read more about it."
+      list_shops
         index = gets.strip.to_i - 1
         shop = Shop.all[index]
         Scraper.scrape_shops[index]

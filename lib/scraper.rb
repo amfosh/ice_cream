@@ -13,7 +13,8 @@ class Scraper
       doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
       shop_list = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
       shop_names << shop_list
-      shop_list.uniq
+      shop_list.uniq.each do |shop| 
+        puts "#{shop}"
       # binding.pry
 
       # each do |shop_doc|
@@ -35,4 +36,5 @@ class Scraper
       html.css("a.review")[2].text.split(',').map(&:strip)
       shop.review = ("p")
     end
+end
 end
