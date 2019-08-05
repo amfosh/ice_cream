@@ -7,7 +7,7 @@ class Shop
         @@all
     end
 
-    def initialize(name:)
+    def initialize(name)
         @name = name
         @review = nil
         self.class.all << self

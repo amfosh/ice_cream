@@ -6,30 +6,23 @@ class Scraper
       # shops << self.scrape_shops
     # end
 
-    # BASE_URL = "https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"
+    BASE_URL = "https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"
 
     def self.scrape_shops
-      shop_names = []
-      doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
+      doc = Nokogiri::HTML(open(BASE_URL))
       shop_list = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
-      shop_names << shop_list
       shop_list.uniq.each.with_index(1) do |shop, index| 
         puts "#{index}. #{shop}"
+      # shop_list.each do |div|
+      #   input_arg = {
+      #     url: doc.search('.spot-block__title-copy h3 a').attr('href')
+      # }
       # binding.pry
-
-      # each do |shop_doc|
-
-      #   shop_name = shop_doc.css("h3").
-      # shop_names
-      # .each do |shop_doc|e
-      # @@SHOPS << shop_list
-      # @@SHOPS
-      # shop_list.each do |shop_doc|
-    
     end
 
     def self.scrape_review(shop)
-      # doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
+      puts input_arg
+      pg = Nokogiri::HTML(open(BASE_URL))
       url = shop.url
       html = Nokogiri.HTML(open(url))
       details =
