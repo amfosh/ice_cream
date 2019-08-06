@@ -7,8 +7,8 @@ class CLI
             if user_input == 'exit' || user_input.include?('n')
               return
             else
-              self.choose_shop
               self.list_shops
+              self.choose_shop
             end
           end
         end 
@@ -30,8 +30,13 @@ class CLI
 
     def choose_shop
       puts "Choose an ice cream shop to read more about it."
-      Shop.all.each.with_index(1) do |shop, index| 
-        puts "#{index}. #{shop.name}"
+      Scraper.scrape_shops
+  
+        input = gets.chomp
+
+
+
+        Scraper.scrape_review(shop)
       # list_shops
       #   index = gets.strip.to_i - 1
       #   shop = Shop.all[index]
@@ -40,9 +45,6 @@ class CLI
       end
 
     def display_shop_info(shop)
-      puts shop.name
-      puts shop.neighborhood
-      puts shop.review
+ #
     end
   end
-end
