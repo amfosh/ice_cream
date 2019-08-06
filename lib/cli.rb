@@ -30,11 +30,13 @@ class CLI
 
     def choose_shop
       puts "Choose an ice cream shop to read more about it."
-      list_shops
-        index = gets.strip.to_i - 1
-        shop = Shop.all[index]
-        Scraper.scrape_shops[index]
-        # self.scrape_shops
+      Shop.all.each.with_index(1) do |shop, index| 
+        puts "#{index}. #{shop.name}"
+      # list_shops
+      #   index = gets.strip.to_i - 1
+      #   shop = Shop.all[index]
+      #   Scraper.scrape_shops[index]
+      #   # self.scrape_shops
       end
 
     def display_shop_info(shop)
@@ -43,3 +45,4 @@ class CLI
       puts shop.review
     end
   end
+end
