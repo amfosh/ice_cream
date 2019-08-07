@@ -6,11 +6,13 @@ class Scraper
 
     def self.scrape_shops
       doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
-        name = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
-        shop = name.uniq
-        url = doc.search(".spot-block__title-copy a").attr("href").map{|href| href.value}
-        shop.each.with_index(1) do |shop, index| 
-          puts "#{index}. #{shop}"
+        list = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
+        names = list.uniq
+        url = doc.css(".spot-block__title-copy a").attr("href").value
+        binding.pry
+        names.each.with_index(1) do |name, index| 
+          puts "#{index}. #{name}"
+          # Shop.new(name)
         # binding.pry
       # map{|h3| h3.text.strip}
       # url = 

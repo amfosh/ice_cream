@@ -1,12 +1,12 @@
 class Shop
     @@all = []
 
-    attr_accessor :shop, :url
+    attr_accessor :name
 
-    def initialize(shop_name, url)
-        @shop_name = shop_name
+    def initialize(name)
+        @name = name
         @@all << self
-        @url = url
+        # @url = url
         # @review = nil
         # self.class.all << self
     end
