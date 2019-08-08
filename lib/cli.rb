@@ -19,6 +19,7 @@ class CLI
       if shop 
         Scraper.scrape_review(shop)
         puts "Here is the review for #{shop.name}"
+        puts "#{shop.review}"
       else
         puts "Invalid. Try again!"
       end

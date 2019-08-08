@@ -7,13 +7,13 @@ class Scraper
         
       list = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
         names = list.uniq
-      url = doc.search(".spot-block__title-copy a").attr("href").text
-        # Shop.new(name)
-        names.each do |name| 
-          shop = Shop.new(name, url)
-          shop.save
-        end
-   end
+        url = doc.search(".spot-block__title-copy a").attr("href").text
+        # binding.pry
+      names.each do |name| 
+        shop = Shop.new(name, url)
+        shop.save
+      end
+    end
 
    def self.scrape_review(shop)
     url = shop.url
@@ -21,6 +21,7 @@ class Scraper
     doc = Nokogiri::HTML(html)
     details = doc.search(".post__content__text-block p").text
     shop.review = details
+    # binding.pry
    end
 end
 
