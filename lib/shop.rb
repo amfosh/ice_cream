@@ -5,14 +5,15 @@ class Shop
 
     def initialize(name)
         @name = name
-        @@all << self
         # @url = url
-        # @review = nil
-        # self.class.all << self
     end
 
     def self.all
         @@all
+    end
+
+    def save
+        @@all << self
     end
 
 end

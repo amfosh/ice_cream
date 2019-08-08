@@ -1,16 +1,11 @@
 class CLI
 
     def run
-      shop_names = []
       puts "Welcome ice cream lover!"
+      Scraper.scrape_shops
 
       # html = open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings")
-      doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
-      name = doc.css(".spot-block__title-copy h3").map{|h3| h3.text.strip}
-      shop_name = name.uniq
-
-      shop_name.each.with_index(1) do |shop_name, index| 
-        puts "#{index}. #{shop_name}"
+     
 
       # binding.pry
      
@@ -21,9 +16,8 @@ class CLI
         # shop_names.each.with_index(1) do |name, i|
         #   puts "#{i}. #{name}"
       # 
-      end
-    end
   end
+end
 #         self.welcome
 #         loop do
 #             user_input = main_menu
