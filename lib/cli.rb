@@ -3,6 +3,28 @@ class CLI
     def run
       puts "Welcome ice cream lover!"
       Scraper.scrape_shops
+     
+      Shop.all.each.with_index(1) do |shop, index| 
+        puts "#{index}. #{shop.name}"
+      end
+      main_menu
+    end
+
+    def main_menu
+      puts "Please select a shop to learn more."
+      input = gets.chomp
+
+      shop = Shop.all[input.to_i - 1]
+
+      if shop 
+        Scraper.scrape_review(shop)
+        puts "Here is the review for #{shop.name}"
+      else
+        puts "Invalid. Try again!"
+      end
+      main_menu
+    end
+  end
 
       # html = open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings")
      
@@ -16,8 +38,6 @@ class CLI
         # shop_names.each.with_index(1) do |name, i|
         #   puts "#{i}. #{name}"
       # 
-  end
-end
 #         self.welcome
 #         loop do
 #             user_input = main_menu

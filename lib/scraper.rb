@@ -1,21 +1,23 @@
 require "pry"
 
+BASE_URL = "https://www.theinfatuation.com/"
 class Scraper
   def self.scrape_shops
       doc = Nokogiri::HTML(open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings"))
         
       list = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
         names = list.uniq
-        # binding.pry
+      url = doc.search(".spot-block__title-copy a").attr("href").text
         # Shop.new(name)
-        names.each do |name| 
-          shop = Shop.new(name)
+        names.each do |name, url| 
+          shop = Shop.new(name, url)
           shop.save
         end
-        Shop.all.each.with_index(1) do |shop, index| 
-          puts "#{index}. #{shop.name}"
-        # url = doc.search(".spot-block__title-copy a").attr("href").text
-     end
+   end
+
+   def self.scrape_review(shop)
+    doc = Nokogiri::HTML(open(BASE_URL + shop.url))
+    shop.review = doc.search(".post__content__text-block p")[0].text
    end
 end
 
