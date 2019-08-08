@@ -16,7 +16,9 @@ class Scraper
    end
 
    def self.scrape_review(shop)
-    doc = Nokogiri::HTML(open(BASE_URL + shop.url))
+    url = shop.url
+    html = open(BASE_URL + url)
+    doc = Nokogiri::HTML(html)
     shop.review = doc.search(".post__content__text-block p")[0].text
    end
 end
