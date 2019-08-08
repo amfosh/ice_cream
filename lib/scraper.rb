@@ -9,7 +9,7 @@ class Scraper
         names = list.uniq
       url = doc.search(".spot-block__title-copy a").attr("href").text
         # Shop.new(name)
-        names.each do |name, url| 
+        names.each do |name| 
           shop = Shop.new(name, url)
           shop.save
         end
@@ -19,7 +19,8 @@ class Scraper
     url = shop.url
     html = open(BASE_URL + url)
     doc = Nokogiri::HTML(html)
-    shop.review = doc.search(".post__content__text-block p")[0].text
+    details = doc.search(".post__content__text-block p").text
+    shop.review = details
    end
 end
 
