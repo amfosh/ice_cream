@@ -14,6 +14,7 @@ class CLI
     def main_menu
       puts "Please select a shop to learn more."
       input = gets.chomp
+      while input != "exit"
 
       shop = Shop.all[input.to_i - 1]
 

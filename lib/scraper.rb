@@ -8,10 +8,10 @@ class Scraper
       
         name_list = list.search("h3").map{|h3| h3.text.strip}
           names = name_list.uniq
-          url = list.search("a").attr("href").text
-        
-      names.each do |name| 
-        shop = Shop.new(name, url)
+          url_list = list.search("a").map{|s| s.attr("href")}
+          review_url = url_list.select {|link| link.include?("reviews")}
+      names.each.with_index do |name, index| 
+        shop = Shop.new(name, review_url[index])
         shop.save
       end
     end
