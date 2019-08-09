@@ -8,7 +8,7 @@ class Scraper
       list = doc.search(".spot-block__title-copy h3").map{|h3| h3.text.strip}
         names = list.uniq
         url = doc.search(".spot-block__title-copy a").attr("href").text
-        # binding.pry
+
       names.each do |name| 
         shop = Shop.new(name, url)
         shop.save

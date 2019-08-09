@@ -8,6 +8,7 @@ class CLI
         puts "#{index}. #{shop.name}"
       end
       main_menu
+      end
     end
 
     def main_menu
@@ -25,7 +26,6 @@ class CLI
       end
       main_menu
     end
-  end
 
       # html = open("https://www.theinfatuation.com/seattle/guides/ice-cream-seattle-power-rankings")
      
