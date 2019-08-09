@@ -6,6 +6,7 @@ class Shop
     def initialize(name, url)
         @name = name
         @url = url
+        @review = review
     end
 
     def self.all
@@ -13,7 +14,6 @@ class Shop
     end
 
     def save
-        @@all << self
+        self.class.all << self
     end
-
 end
