@@ -3,11 +3,14 @@ class CLI
     def run
       puts "Welcome ice cream lover!".bright.magenta
       Scraper.scrape_shops
-     
+      list_shops
+      main_menu
+      end
+    end
+
+    def list_shops
       Shop.all.each.with_index(1) do |shop, index| 
         puts "#{index}. #{shop.name}"
-      end
-      main_menu
       end
     end
 
