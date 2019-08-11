@@ -1,6 +1,6 @@
 # IceCream
 
-Welcome to the IceCream gem! If you love ice cream and you live in or are visiting Seattle, you've come to the right place. You will be given a list of the top ice cream shops listed on The Infatuation. To learn more, select a shop by name to see the review. Want to know about another? No problem! Once you exit the program, you will be expected to go eat some ice cream. 
+Welcome to the IceCream gem! If you love ice cream and you live in or are visiting Seattle, you've come to the right place. You will be given a list of the top ice cream shops listed on The Infatuation. To learn more, select a shop by name to see the review. Want to know about another? No problem! There is one requirement: Once you exit the program, you are expected to go eat some ice cream. 
 
 ## Installation
 
@@ -17,10 +17,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install ice_cream
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
