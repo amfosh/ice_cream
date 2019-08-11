@@ -12,14 +12,12 @@ class CLI
     end
 
     def main_menu
-      puts "Please select a shop to learn more or type 'exit' to leave.".bright.magenta
+      puts "Please type a shop's number to learn more or type 'exit' to leave.".bright.magenta
       input = gets.chomp
       if input == "exit"
         exit
-
       else
       shop = Shop.all[input.to_i - 1]
-
       end
 
       if shop 
