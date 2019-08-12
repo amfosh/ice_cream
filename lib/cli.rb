@@ -15,21 +15,23 @@ class CLI
     end
 
     def main_menu
-      puts "Please type a shop's number to learn more or type 'exit' to leave.".bright.magenta
+      puts "Please type a shop's number to learn more or 'list' to see the list again. Type 'exit' to leave.".bright.magenta
       input = gets.chomp
       if input == "exit"
         exit
+      elsif input == "list"
+        list_shops
       else
-      shop = Shop.all[input.to_i - 1]
-      end
+        shop = Shop.all[input.to_i - 1]
 
-      if shop 
-        Scraper.scrape_review(shop)
-        puts "Here is the review for #{shop.name}:".bright.magenta
-        puts "#{shop.review}"
-      
-      else
-        puts "Invalid input. Please try again!".red
+        if shop 
+          Scraper.scrape_review(shop)
+          puts "Here is the review for #{shop.name}:".bright.magenta
+          puts "#{shop.review}"
+    
+        else
+          puts "Invalid input. Please try again!".red
+        end
       end
       main_menu
     end
